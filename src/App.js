@@ -8,7 +8,17 @@ var  SERVER = {
   ipinterna: '175.16.3.6', 
   ipexterna: '181.118.150.145',
   dominio: 'augusta.uao.edu.co',
- };
+};
+
+
+function getServers(n) {
+  let servers = [];
+
+  while (n-- > 0) {
+    servers.push(SERVER);
+  }
+  return servers;
+}
 
 function Login() {
   return(
@@ -34,10 +44,20 @@ function Ficha(props) {
   );
 }
 
+function ListaServidores(props) {
+  var servidores = props.server;
+  const listaItems = servidores.map((servidor) => 
+    <CollectionItem href='#'>{servidor.name}</CollectionItem>
+  );
+  return (
+    <Collection>{listaItems}</Collection>
+  );
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state
+    this.servidores = getServers(2);
   }
 
   render() {
@@ -54,7 +74,7 @@ class App extends Component {
         </Col>
       </Row>
       <Row>
-        <Ficha server={SERVER}/>
+        <ListaServidores server={this.servidores} />
       </Row>
     </Row>
     );
