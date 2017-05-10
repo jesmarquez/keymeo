@@ -16,6 +16,17 @@ function Buscar() {
   return <Input type="text" label="servidor" s={6}/>;
 }
 
+function Ficha(props) {
+  return(
+    <Collection header='Augusta'>
+      <CollectionItem>root:xxxxx</CollectionItem>
+      <CollectionItem>jamarquez:xxxx</CollectionItem>
+      <CollectionItem>mysql:xxxxx</CollectionItem>
+      <CollectionItem>carestrepo:xxxx</CollectionItem>
+    </Collection>
+  );
+}
+
 class App extends Component {
   render() {
     return (
@@ -31,12 +42,7 @@ class App extends Component {
         </Col>
       </Row>
       <Row>
-        <Collection header='Augusta'>
-          <CollectionItem>root:xxxxx</CollectionItem>
-          <CollectionItem>jamarquez:xxxx</CollectionItem>
-          <CollectionItem>mysql:xxxxx</CollectionItem>
-          <CollectionItem>carestrepo:xxxx</CollectionItem>
-        </Collection>
+        <Ficha />
       </Row>
     </Row>
     );
