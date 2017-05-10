@@ -3,6 +3,13 @@ import logo from './logo.svg';
 import {Button, Icon, Row, Col, Input, Collection, CollectionItem} from 'react-materialize';
 import './App.css';
 
+var  SERVER = {
+  name: 'augusta',
+  ipinterna: '175.16.3.6', 
+  ipexterna: '181.118.150.145',
+  dominio: 'augusta.uao.edu.co',
+ };
+
 function Login() {
   return(
     <div>
@@ -17,17 +24,22 @@ function Buscar() {
 }
 
 function Ficha(props) {
+  var server = props.server;
   return(
-    <Collection header='Augusta'>
-      <CollectionItem>root:xxxxx</CollectionItem>
-      <CollectionItem>jamarquez:xxxx</CollectionItem>
-      <CollectionItem>mysql:xxxxx</CollectionItem>
-      <CollectionItem>carestrepo:xxxx</CollectionItem>
+    <Collection header= {server.name}>
+      <CollectionItem>ip interna:{server.ipinterna}</CollectionItem>
+      <CollectionItem>ip externa:{server.ipexterna}</CollectionItem>
+      <CollectionItem>dominio:{server.dominio}</CollectionItem>
     </Collection>
   );
 }
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state
+  }
+
   render() {
     return (
     <Row>
@@ -42,7 +54,7 @@ class App extends Component {
         </Col>
       </Row>
       <Row>
-        <Ficha />
+        <Ficha server={SERVER}/>
       </Row>
     </Row>
     );
