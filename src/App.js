@@ -54,8 +54,26 @@ function Login() {
   );
 }
 
-function Buscar() {
-  return <Input type="text" label="servidor" s={6}/>;
+class Buscar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleFiltroInputChange = this.handleFiltroInputChange.bind(this);
+  }
+
+  handleFiltroInputChange(e) {
+    this.props.onFiltroServidor(e.target.value)
+  }
+
+  render() {
+    return (
+      <Input 
+        type="text" 
+        label="servidor"
+        value={this.props.filtroServidor}
+        onChange={this.handleFiltroInputChange}
+        s={6}/>
+    );
+  }
 }
 
 function Ficha(props) {
@@ -70,21 +88,42 @@ function Ficha(props) {
   );
 }
 
-function ListaServidores(props) {
-  var servidores = props.server;
-    const listaItems = servidores.map((servidor) => 
-    <CollectionItem href='#'>{servidor.name}</CollectionItem>
-  );
-
-  return (
-    <Collection>{listaItems}</Collection>
-  );
+class ListaServidores extends React.Component {
+  render() {
+    var rows = [];
+    if (this.props.filtroServidor.length == 0 ) {
+      this.props.servers.forEach((server) => {
+        rows.push(<CollectionItem href='#'>{server.name}</CollectionItem>);
+      });
+    } else{
+      this.props.servers.forEach((server) => {
+        if (server.name.indexOf(this.props.filtroServidor) === -1) {
+          return;
+        }
+        rows.push(<CollectionItem href='#'>{server.name}</CollectionItem>);
+      });
+    }  
+    return (
+      <Collection>{rows}</Collection>
+   );
+  }
 }
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.servidores = getServers(2);
+    this.servidores = getServers(4);
+    this.state = {
+      filtroServidor: ''
+    };
+
+    this.handleFiltroInput = this.handleFiltroInput.bind(this);
+  }
+
+  handleFiltroInput(filtroTexto) {
+    this.setState({
+      filtroServidor: filtroTexto
+    });
   }
 
   render() {
@@ -97,11 +136,17 @@ class App extends Component {
       </Row>
       <Row>
         <Col s={12} className='buscar'>
-          <Buscar />
+          <Buscar 
+            filtroServidor={this.state.filtroServidor}
+            onFiltroServidor={this.handleFiltroInput}
+          />
         </Col>
       </Row>
       <Row>
-        <ListaServidores server={this.servidores} />
+        <ListaServidores
+          servers={this.servidores} 
+          filtroServidor={this.state.filtroServidor}
+        />
       </Row>
     </Row>
     );
