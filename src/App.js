@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Row, Col, Input, Collection, CollectionItem} from 'react-materialize';
+import {Button, Row, Col, Input, Collection, CollectionItem} from 'react-materialize';
 import './App.css';
 
 function getServers(n) {
@@ -41,13 +41,57 @@ function getServers(n) {
   return servers;
 }
 
-function Login() {
-  return(
-    <div>
-      <Input type="email" label="email" s={3}/>
-      <Input type="password" label="password" s={3}/>)
-    </div>
-  );
+class LoginForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: ''
+    };
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleInputChange(event) {
+    const target = event.target;
+    this.setState({
+      [target.name]: target.value
+    });
+  }
+
+  handleSubmit(event) {
+    alert('Solicitud de acceso!');
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <Input 
+            name="username"
+            type="email"
+            label="email"
+            value={this.state.username}
+            onChange={this.handleInputChange}
+            s={2}
+          />  
+          <Input 
+            name="password"
+            type="password"
+            label="password"
+            value={this.state.password}
+            onChange={this.handleInputChange}
+            s={2}
+          />
+          <Input
+            type="submit"
+            value="Login!"
+            s={2}
+          />
+        </form>
+      </div>
+    );
+  }
 }
 
 class Buscar extends React.Component {
@@ -115,7 +159,7 @@ class App extends Component {
     <Row>
       <Row>
           <Col s={12} offset={"s6"} className='login'>
-            <Login />
+            <LoginForm />
           </Col>
       </Row>
       <Row>
