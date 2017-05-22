@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import {Button, Row, Col, Input, Collection, CollectionItem} from 'react-materialize';
+import {Row, Col} from 'react-materialize';
 import './App.css';
+import LoginForm from './LoginForm';
+import Buscar from './Buscar';
+import ListaServidores from './ListaServidores';
 
 function getServers(n) {
   /* while (n-- > 0) {
@@ -39,102 +42,6 @@ function getServers(n) {
   ];
 
   return servers;
-}
-
-class LoginForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password: ''
-    };
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  handleInputChange(event) {
-    const target = event.target;
-    this.setState({
-      [target.name]: target.value
-    });
-  }
-
-  handleSubmit(event) {
-    alert('Solicitud de acceso!');
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <Input 
-            name="username"
-            type="email"
-            label="email"
-            value={this.state.username}
-            onChange={this.handleInputChange}
-            s={2}
-          />  
-          <Input 
-            name="password"
-            type="password"
-            label="password"
-            value={this.state.password}
-            onChange={this.handleInputChange}
-            s={2}
-          />
-          <Input
-            type="submit"
-            value="Login!"
-            s={2}
-          />
-        </form>
-      </div>
-    );
-  }
-}
-
-class Buscar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleFiltroInputChange = this.handleFiltroInputChange.bind(this);
-  }
-
-  handleFiltroInputChange(e) {
-    this.props.onFiltroServidor(e.target.value)
-  }
-
-  render() {
-    return (
-      <Input 
-        type="text" 
-        label="servidor"
-        value={this.props.filtroServidor}
-        onChange={this.handleFiltroInputChange}
-        s={6}/>
-    );
-  }
-}
-
-class ListaServidores extends React.Component {
-  render() {
-    var rows = [];
-    if (this.props.filtroServidor.length === 0 ) {
-      this.props.servers.forEach((server) => {
-        rows.push(<CollectionItem key={server.id} href='#'>{server.name}</CollectionItem>);
-      });
-    } else{
-      this.props.servers.forEach((server) => {
-        if (server.name.indexOf(this.props.filtroServidor) === -1) {
-          return;
-        }
-        rows.push(<CollectionItem key={server.id} href='#'>{server.name}</CollectionItem>);
-      });
-    }  
-    return (
-      <Collection>{rows}</Collection>
-   );
-  }
 }
 
 class App extends Component {
