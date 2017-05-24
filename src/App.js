@@ -4,55 +4,30 @@ import './App.css';
 import LoginForm from './LoginForm';
 import Buscar from './Buscar';
 import ListaServidores from './ListaServidores';
-
-function getServers(n) {
-  /* while (n-- > 0) {
-    servers.push(SERVER);
-  } */
-
-  let servers = [
-    {
-      id: '1',
-      name: 'augusta',
-      ipinterna: '175.16.3.6', 
-      ipexterna: '181.118.150.145',
-      dominio: 'augusta.nobit.edu.co',
-    },
-    {
-      id: '2',
-      name: 'api',
-      ipinterna: '165.18.3.6', 
-      ipexterna: '171.118.150.145',
-      dominio: 'api.nobit.edu.co',
-    },
-    {
-      id: '3',
-      name: 'clientes',
-      ipinterna: '175.16.3.6', 
-      ipexterna: '181.118.150.145',
-      dominio: 'clientes.nobit.edu.co',
-    },
-    {
-      id: '4',
-      name: 'database',
-      ipinterna: '165.18.3.6', 
-      ipexterna: '171.118.150.145',
-      dominio: 'database.nobit.edu.co',
-    }
-  ];
-
-  return servers;
-}
+import Cliente from './Client';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.servidores = getServers(4);
-    this.state = {
-      filtroServidor: ''
-    };
 
+    this.state = {
+      filtroServidor: '',
+      servidores: [],
+    };
+    
     this.handleFiltroInput = this.handleFiltroInput.bind(this);
+  }
+
+  componentWillMount() {
+    console.log('it will mount!');
+  }
+
+  componentDidMount() {
+    console.log('it did mount!');
+    
+    Cliente.listaServidores((servers) => {
+      this.setState({servidores: servers});
+    });
   }
 
   handleFiltroInput(filtroTexto) {
@@ -79,7 +54,7 @@ class App extends Component {
       </Row>
       <Row>
         <ListaServidores
-          servers={this.servidores} 
+          servers={this.state.servidores} 
           filtroServidor={this.state.filtroServidor}
         />
       </Row>
