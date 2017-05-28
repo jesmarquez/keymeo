@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {Row, Col} from 'react-materialize';
-import './App.css';
-import LoginForm from './LoginForm';
-import Buscar from './Buscar';
-import ListaServidores from './ListaServidores';
-import Cliente from './Client';
+import '../../App.css';
+import LoginForm from '../componentes/LoginForm';
+import Buscar from '../componentes/Buscar';
+import ListaServidores from '../componentes/ListaServidores';
+import Cliente from '../../Client';
 
 class App extends Component {
   constructor(props) {
