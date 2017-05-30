@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {Row, Col} from 'react-materialize';
 import './App.css';
-import LoginForm from './LoginForm';
+import LoginPage from './LoginPage';
 import Buscar from './Buscar';
 import ListaServidores from './ListaServidores';
-import Cliente from './Client';
+import Cliente from '../../Client';
 
 class App extends Component {
   constructor(props) {
@@ -41,7 +41,7 @@ class App extends Component {
     <Row>
       <Row>
           <Col s={12} offset={"s6"} className='login'>
-            <LoginForm />
+            <LoginPage />
           </Col>
       </Row>
       <Row>
