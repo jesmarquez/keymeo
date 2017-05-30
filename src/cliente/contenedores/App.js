@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {Row, Col} from 'react-materialize';
 import './App.css';
 import LoginPage from './LoginPage';
-import Buscar from './Buscar';
-import ListaServidores from './ListaServidores';
+import Buscar from '../componentes/Buscar';
+import ListaServidores from '../componentes/ListaServidores';
 import Cliente from '../../Client';
 
 class App extends Component {

@@ -1,11 +1,11 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Input } from 'react-materialize';
 
 const LoginForm = ({
   onSubmit,
   onChange,
   errors,
-  user
+  user,
 }) => (
   <div>
     <form onSubmit={onSubmit}>
@@ -33,12 +33,5 @@ const LoginForm = ({
     </form>
   </div>
 );
-
-LoginForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired
-}
 
 export default LoginForm;
