@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Row, Col} from 'react-materialize';
 import './App.css';
 import LoginPage from './LoginPage';
-import Buscar from '../componentes/Buscar';
+import HomePage from '../componentes/HomePage';
 import ListaServidores from '../componentes/ListaServidores';
 import Cliente from '../../Client';
 
@@ -46,10 +46,7 @@ class App extends Component {
       </Row>
       <Row>
         <Col s={12} className='buscar'>
-          <Buscar 
-            filtroServidor={this.state.filtroServidor}
-            onFiltroServidor={this.handleFiltroInput}
-          />
+          <HomePage /> 
         </Col>
       </Row>
       <Row>
