@@ -3,7 +3,7 @@ import { Col, CardPanel } from 'react-materialize';
 
 const HomePage = () => (
   <Col s={12}>
-    <CardPanel classname="teal lighten-4 black-text">
+    <CardPanel className="teal lighten-4 black-text">
       <span>App keymeo para visualizar claves</span>
     </CardPanel>
   </Col>

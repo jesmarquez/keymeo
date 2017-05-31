@@ -1,13 +1,14 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const Base = ({ children }) => (
-  <div>
-    { children }
-  </div>
-);
+class Base extends React.Component {
+  render() {
+    return <div> {this.props.children } </div>;
+  }
+}
 
-Base.PropTypes = {
-  children: PropTypes.object.isRequired
+Base.propTypes = {
+  children: PropTypes.object
 };
 
 export default Base;
