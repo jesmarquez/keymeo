@@ -1,5 +1,7 @@
 import React from 'react';
-import { Input } from 'react-materialize';
+import Card from 'material-ui/Card';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 const LoginForm = ({
   onSubmit,
@@ -7,31 +9,36 @@ const LoginForm = ({
   errors,
   user,
 }) => (
-  <div>
+  <Card className="container">
     <form onSubmit={onSubmit}>
-      <Input 
-        name="username"
-        type="email"
-        label="email"
-        value={user.username}
-        onChange={onChange}
-        s={2}
-      />  
-      <Input 
-        name="password"
-        type="password"
-        label="password"
-        value={user.password}
-        onChange={onChange}
-        s={2}
-      />
-      <Input
-        type="submit"
-        value="Login!"
-        s={2}
-      />
+      <div className="field-name">
+        <TextField 
+          name="username"
+          type="email"
+          label="email"
+          value={user.username}
+          onChange={onChange}
+        />  
+      </div>
+      
+      <div className="field-name">
+        <TextField
+          name="password"
+          type="password"
+          label="password"
+          value={user.password}
+          onChange={onChange}
+        />
+      </div>
+
+      <div className="button-line">
+        <RaisedButton
+          type="submit"
+          value="Login!"
+        />
+      </div>
     </form>
-  </div>
+  </Card>
 );
 
 export default LoginForm;

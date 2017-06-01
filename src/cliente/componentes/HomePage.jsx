@@ -1,12 +1,26 @@
 import React from 'react';
-import { Col, CardPanel } from 'react-materialize';
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
 
 const HomePage = () => (
-  <Col s={12}>
-    <CardPanel className="teal lighten-4 black-text">
-      <span>App keymeo para visualizar claves</span>
-    </CardPanel>
-  </Col>
-  );
+  <Card>
+    <CardHeader
+      title="Gestione claves"
+      subtitle="Servidores"
+      actAsExpander={true}
+      showExpandableButton={true}
+    />
+    <CardActions>
+      <FlatButton label="Encripte" />
+      <FlatButton label="Listar" />
+    </CardActions>
+    <CardText expandable={true}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
+      Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
+      Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+    </CardText>
+  </Card>
+);
 
 export default HomePage;
