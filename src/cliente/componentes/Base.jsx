@@ -1,14 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Navbar, NavItem } from 'react-materialize';
 
-class Base extends React.Component {
-  render() {
-    return <div> {this.props.children } </div>;
-  }
-}
-
-Base.propTypes = {
-  children: PropTypes.object
-};
+const Base = () => (
+  <div>
+    <Navbar brand='KeyMeo' right>
+      <NavItem href='#'>Login</NavItem>
+      <NavItem href='#'>Components</NavItem>
+    </Navbar>
+  </div>
+);
 
 export default Base;
