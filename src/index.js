@@ -1,14 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import LoginPage from './cliente/contenedores/LoginPage';
-import HomePage from './cliente/componentes/HomePage';
+import routes from './routes'
 
 ReactDOM.render((
   <Router>
     <div>
-      <Route exact path="/" component={HomePage}/>
-      <Route path="/login" component={LoginPage}/>
+      {routes.map((route, index) => (
+        <Route
+          key={index}
+          path={route.path}
+          exact={route.exact}
+          component={route.component}
+        />
+      ))}
     </div>
   </Router>),
   document.getElementById('root')
