@@ -26,7 +26,7 @@ const Base = () => (
 	    title={<span style={styles.title}>KeyMeo</span>}
 	    onTitleTouchTap={handleTouchTap}
 	    iconElementLeft={<IconButton><NavigationClose /></IconButton>}
-	    iconElementRight={<FlatButton label="Login" />}
+          iconElementRight={ <Link to="/login"><FlatButton label="Login" style={{ color: 'white'}}/></Link>}
 	  />
   </div>
 );
