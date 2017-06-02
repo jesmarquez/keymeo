@@ -20,14 +20,13 @@ const styles = {
  * through the `onTouchTap` property, and a [FlatButton](/#/components/flat-button) on the right.
        <Link to="/login"><NavItem>Login</NavItem></Link>
  */
-
 const Base = () => (
-  <div>
+  <div className="top-bar">
 	  <AppBar
 	    title={<span style={styles.title}>KeyMeo</span>}
 	    onTitleTouchTap={handleTouchTap}
 	    iconElementLeft={<IconButton><NavigationClose /></IconButton>}
-	    iconElementRight={<Link to="/login"><FlatButton label="Login" /></Link>}
+	    iconElementRight={<FlatButton label="Login" />}
 	  />
   </div>
 );

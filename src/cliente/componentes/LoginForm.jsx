@@ -7,26 +7,28 @@ const LoginForm = ({
   onSubmit,
   onChange,
   errors,
-  user,
+  user
 }) => (
   <Card className="container">
     <form onSubmit={onSubmit}>
-      <div className="field-name">
-        <TextField 
+      <h4 className="card-heading">Login</h4>
+
+      {errors.summary && <p className="error-message">{errors.summary}</p>}
+
+      <div className="field-line">
+        <TextField
+          floatingLabelText="username"
           name="username"
           type="email"
-          label="email"
-          value={user.username}
           onChange={onChange}
         />  
       </div>
       
-      <div className="field-name">
+      <div className="field-line">
         <TextField
+          floatingLabelText="password"
           name="password"
           type="password"
-          label="password"
-          value={user.password}
           onChange={onChange}
         />
       </div>
@@ -34,7 +36,8 @@ const LoginForm = ({
       <div className="button-line">
         <RaisedButton
           type="submit"
-          value="Login!"
+          label="Login!"
+          primary
         />
       </div>
     </form>

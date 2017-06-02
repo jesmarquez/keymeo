@@ -32,7 +32,7 @@ class LoginPage extends React.Component {
       <LoginForm
         onSubmit={this.handleSubmit}
         onChange={this.handleInputChange}
-        errors={this.errors}
+        errors={this.state.errors}
         user={this.state.user}
       />
     );
