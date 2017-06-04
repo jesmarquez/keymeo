@@ -2,16 +2,16 @@ import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
-import FlatButton from 'material-ui/FlatButton';
 import { Link } from 'react-router-dom';
 
 function handleTouchTap() {
-  alert('onTouchTap triggered on the title component');
+
 }
 
 const styles = {
   title: {
     cursor: 'pointer',
+    color: 'white',
   },
 };
 
@@ -23,10 +23,9 @@ const styles = {
 const Base = () => (
   <div className="top-bar">
 	  <AppBar
-	    title={<span style={styles.title}>KeyMeo</span>}
+	    title={ <Link to="/"><span style={ styles.color }>KeyMeo</span></Link> }
 	    onTitleTouchTap={handleTouchTap}
 	    iconElementLeft={<IconButton><NavigationClose /></IconButton>}
-          iconElementRight={ <Link to="/login"><FlatButton label="Login" style={{ color: 'white'}}/></Link>}
 	  />
   </div>
 );
