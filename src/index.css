@@ -19,7 +19,7 @@ a:hover {
 }
 
 .top-bar {
-  padding: 10px 15px;
+  padding: 10px 0px;
   margin-bottom: 50px;
 }
 .top-bar::after {
@@ -54,7 +54,6 @@ a:hover {
 
 .field-line, .button-line {
   padding: 16px;
-  margin: 16px;
 }
 
 .error-message {
